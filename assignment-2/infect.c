@@ -14,25 +14,25 @@ int main() {
     fclose(target);
     
     // replace nop with movl of the address of the string to print
-    buffer[1102] = 0xc3;
-    buffer[1103] = 0x04;
-    buffer[1104] = 0x24;
+    buffer[1102] = 0x68;
 
     // Fill in little-endian representation of 0x0804845C starting from offset 1104
-    buffer[1104] = 0x5c; // Least significant byte
-    buffer[1105] = 0x84;
-    buffer[1106] = 0x04;
-    buffer[1107] = 0x08; // Most significant byte
+    buffer[1103] = 0x5c; // Least significant byte
+    buffer[1104] = 0x84;
+    buffer[1105] = 0x04;
+    buffer[1106] = 0x08; // Most significant byte
+
+
 
     // Insert 'call puts' instruction (e8 94 fe ff ff) at the appropriate offset
-    buffer[1108] = 0xe8; // call opcode
-    buffer[1109] = 0x94; // offset byte 1
-    buffer[1110] = 0xfe; // offset byte 2
-    buffer[1111] = 0xff; // offset byte 3
-    buffer[1112] = 0xff; // offset byte 4
+    buffer[1107] = 0xe8; // call opcode
+    buffer[1108] = 0x94; // offset byte 1
+    buffer[1109] = 0xfe; // offset byte 2
+    buffer[1110] = 0xff; // offset byte 3
+    buffer[1111] = 0xff; // offset byte 4
 
     // Return to the original program
-    buffer[1113] = 0xc3; // ret opcode
+    buffer[1112] = 0xc3; // ret opcode
 
     // Fill buffer with "Wahoo virus activated!" starting from offset 0x45C (1116 in decimal)
     buffer[1116] = 0x57; // W
