@@ -72,7 +72,8 @@ int main() {
     buffer[1147] = 0x65; // e
     buffer[1148] = 0x64; // d
     buffer[1149] = 0x21; // !
-    buffer[1150] = 0x0A; // null terminator
+    buffer[1150] = 0x0A; // new line
+    buffer[1151] = 0x00; // null terminator
 
     // replace char 493 with push 0x0804844e in little endian
     buffer[1171] = 0x68;
