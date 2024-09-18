@@ -35,7 +35,7 @@ int main() {
     buffer[1116] = 0x08;
 
     // mov edx, 24
-    buffer[1118] = 0xba;
+    buffer[1117] = 0xba;
     buffer[1118] = 0x17;
     buffer[1119] = 0x00;
     buffer[1120] = 0x00;
