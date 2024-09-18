@@ -3,7 +3,7 @@
 #include <string.h>
 
 int main() {
-    // char * 7328 bytes = 7328 characters = 7328 ASCII characters
+    // char * 7328 bytes = 7328 characters = 7328 bytes
     char * buffer = (char *)malloc(sizeof(char) * 7328);
     FILE * target = fopen("target.exe", "r+b");
     fread(buffer, sizeof(char), 7328, target);
