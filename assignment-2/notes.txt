@@ -1,0 +1,8 @@
+1. infect.c reads target.exe to generate an infected-target.exe
+2. infected-target.exe will have a trikcy jump and virus payload
+3. infected-target.exe should be of size 7328 bytes
+
+notes:
+when virus code executes ret it pops the original return address.
+need to read the binary w/ readelf in order to know where in the binary to edit.
+since you are statically editing not trying to infect at run-time.
