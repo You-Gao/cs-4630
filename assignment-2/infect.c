@@ -37,13 +37,17 @@ int main() {
     // mov edx, 23
     buffer[1117] = 0xba;
     buffer[1118] = 0x17;
+    buffer[1119] = 0x00;
+    buffer[1120] = 0x00;
+    buffer[1121] = 0x00;
+
 
     // syscall
-    buffer[1119] = 0xcd;
-    buffer[1120] = 0x80;
+    buffer[1122] = 0xcd;
+    buffer[1123] = 0x80;
 
     // ret
-    buffer[1121] = 0xc3;
+    buffer[1124] = 0xc3;
 
     // Fill buffer with "Wahoo virus activated!" starting from offset 1128
     buffer[1128] = 0x57; // W
