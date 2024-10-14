@@ -1,0 +1,11 @@
+--- App/Cilly.pm.orig   2024-10-14 12:00:00.000000000 +0000
++++ App/Cilly.pm        2024-10-14 12:01:00.000000000 +0000
+@@ -2218,9 +2218,9 @@
+ < open(VER, "@{$self->{CC}} -dumpversion "
+ < . join(' ', @{$self->{PPARGS}}) ." |")
+- open(VER, "@{$self->{CC}} -dumpversion -dumpfullversion "
++ . join(' ', @{$self->{PPARGS}}) ." |")
+ - 
+ - if($_ =~ m|^(\d+\S+)| || $_ =~ m|^(egcs-\d+\S+)|) {
+ + if($_ =~ m|^(\d+\S*)| || $_ =~ m|^(egcs-\d+\S*)|) {
+
