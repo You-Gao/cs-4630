@@ -1,0 +1,9 @@
+I did a dead analysis so I fdisk -l the victim.raw to get the start sector and then mounted it
+
+For timezone and a lot of the other info I dug around /etc/ for the timezone file, hostname file
+
+For the email/chats I dug around the user home where those kinds of file used to be stored. I looked up what ./purple was and whatever Jabber was to make sure I found the write place for the chat logs and then dug around for the names in the .xml and logs
+
+The only file I found of interest was the you-cheater.jpg in userhome and didn't really find anything else. I ran find . -name "*.ext" for any file that could be of interest
+
+For the IP's I looked in auth.log to see any remote connections and grep'd for "from" and then went to syslog to check for the IP assignment
